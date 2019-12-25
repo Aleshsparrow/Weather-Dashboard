@@ -1,0 +1,33 @@
+nav{
+    background-color: black;
+    padding: 20px;
+    color: white;  
+    align-self: center;  
+}
+#top{
+    text-align: center;
+}
+.five-day{
+    margin: 5px;
+    width: 15%;
+    height: 200px;
+    padding: 10px;
+    background-color: blue;
+    border-radius: 10px;
+}
+#search-form{
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 100%;
+    }
+/* #city{
+    height: 70px;
+    border: 10;
+    
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+#forecast{
+    border-radius: 5px;
+    margin: 5px;
+} */

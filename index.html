@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+     crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div id="top" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            Weather Dashboard
+        </div>
+    </nav>
+    <div class="row"> 
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <form id="search-form">
+                <label for="search-input">Search for city</label>
+                <input type="text" id="search-input"><br>
+                <input id="select-city" type="submit" value="Search">
+                <div id="search-history" ></div>            
+            </form>
+        </div>
+        <div id="city" style="margin: auto; border: black;" class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div>
+                <h2 id="display-city"></h2>
+                <h6 id="weather-details"></h6>
+            </div>
+
+        <div>
+            <h2 id="forecast">
+                5 Day Forecast:
+            </h2>
+
+            <div>
+                <div class="row">
+                    <div class="five-day" class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <h6 id="date-one" class="card-title"></h6>
+                            <p class="card-text"></p>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="five-day" class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 id="date-two" class="card-title"></h5>
+                            <p class="card-text"></p>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="five-day" class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 id="date-three" class="card-title"></h5>
+                            <p class="card-text"></p>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="five-day" class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="date-four" class="card-title"></h5>
+                          <p class="card-text"></p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="five-day" class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="date-five" class="card-title"></h5>
+                          <p class="card-text"></p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    
+    <script src="./script.js"></script>
+</body>
+</html>

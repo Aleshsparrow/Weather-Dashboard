@@ -20,6 +20,18 @@ nav{
     margin-top: 10px;
     height: 100%;
     }
+    ul{
+        padding:0px;
+        width:100%;
+    }
+    ul>li{
+        border-radius: 15px;
+        text-align: center;
+        display:inline-block;
+        background-color: blue;
+        color: white;
+        margin: 0.5%;
+    }
 /* #city{
     height: 70px;
     border: 10;

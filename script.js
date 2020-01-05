@@ -1,8 +1,15 @@
-if(window.moment){
-  console.log("moment not loading");
-}
+// if(window.moment){
+  // console.log("moment not loading");
+// }
+// var dataM = moment();
+// dataM = dataM._d.split(" ")
+// console.log(dataM)
 
 // var APIKey = "2d0fa82442b24204860c78bd6df0510b"
+
+
+
+
 function displayWeather(){
     event.preventDefault();
     
@@ -21,7 +28,25 @@ function displayWeather(){
       // weatherDetails.innerHTML.display = "";
       console.log(response)
       // weatherDetails.innerHTML = ""
-      
+           
+          var longitude = response.coord.lon
+          var latitude = response.coord.lat
+          console.log(longitude, latitude)
+          $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=2d0fa82442b24204860c78bd6df0510b",
+            method: "GET"
+          }).then(function(res) {
+            var uv = $("#uv-details")
+            var index = $("<div>")
+            $(index).text(res.value)
+            console.log(res.value)
+            $(uv).append(index)
+            // $("uv-details").text(res.value.toString())
+            // var displayIndex = $("<div>").text(res.value)
+            // $(displayUV).text(resUV.value)
+              // console.log(displayIndex)
+          })
+          
       var city = $("#display-city")
       city.text(response.name)
       var img = $("<img>").attr(
@@ -62,7 +87,7 @@ function fiveDay(){
         url: queryURL,
         method: "GET"
       }).then(function(data){
-          console.log(data)
+          // console.log(data)
 
           var one = $("#date-one")
 
@@ -80,12 +105,12 @@ function fiveDay(){
             for (var i = 0; i < data.list.length; i++){
               if(data.list[i].dt_txt.indexOf("12:00:00") !== -1){
                 var date = data.list[i].dt_txt.split(" ")
-                console.log(date);
+                // console.log(date);
                 var unformatDate = date[0].split("-")
                 formatDate = unformatDate[1]+"/"+unformatDate[2]+"/"+unformatDate[0];
-                console.log(formatDate)
+                // console.log(formatDate)
                 var listCards = $("<li>")
-                var card = $("<div>").addClass("row col-lg-2 col-md-2 col-sm-6 col-xs-12").text(formatDate)
+                var card = $("<div>").addClass("row col-lg-3 col-md-3 col-sm-6 col-xs-12").text(formatDate)
                 var img1 = $("<img>").attr(
                   "src",
                   "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
@@ -99,8 +124,8 @@ function fiveDay(){
                   
                   listCards.append(card, img1, temp1, hum1)
                 $("#show-five").append(listCards)
-                console.log(data.list[i].dt_txt);
-                console.log(data.list[i].main.temp);
+                // console.log(data.list[i].dt_txt);
+                // console.log(data.list[i].main.temp);
               }
             }
           // var temp1 = $("<p>")

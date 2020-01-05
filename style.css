@@ -13,7 +13,7 @@ nav{
     height: 200px;
     padding: 10px;
     background-color: blue;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 #search-form{
     margin-left: 10px;
@@ -32,6 +32,8 @@ nav{
         color: white;
         margin: 0.5%;
     }
+    
+    
 /* #city{
     height: 70px;
     border: 10;

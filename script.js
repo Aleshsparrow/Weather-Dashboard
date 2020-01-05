@@ -53,10 +53,10 @@
         var uv = $("#uv-details")
         var index = $("<div>")
         $(index).text(res.value)
-        var cityTime = res.date_iso.split("T")
-        cityTime = res.date_iso.split("T")[0].split("-")
-        cityTimePaste = "(" + cityTime[1] + "/" + cityTime[2] + "/" + cityTime[0] + ")"
-        console.log(cityTimePaste)
+        // var cityTime = res.date_iso.split("T")
+        // cityTime = res.date_iso.split("T")[0].split("-")
+        // cityTimePaste = "(" + cityTime[1] + "/" + cityTime[2] + "/" + cityTime[0] + ")"
+        // console.log(cityTimePaste)
         $(uv).append(index)
         // $("uv-details").text(res.value.toString())
         // var displayIndex = $("<div>").text(res.value)
@@ -64,12 +64,12 @@
           // console.log(displayIndex)
       })
          
-          
       
-      city.text(response.name)
-      var timeData = moment()
-      moment(timeData).format('MM/DD/YYYY');
-      console.log(timeData._d)
+      
+      city.text(response.name + " (" + new Date().toLocaleDateString() + ")")
+      // var timeData = moment()
+      // moment(timeData).format('MM/DD/YYYY');
+      // console.log(timeData._d)
       var img = $("<img>").attr(
         "src",
         "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");

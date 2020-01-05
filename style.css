@@ -33,6 +33,10 @@ nav{
         margin: 0.5%;
     }
     
+    #search-history{
+        width: 100%;
+        display: block;
+    }
     
 /* #city{
     height: 70px;

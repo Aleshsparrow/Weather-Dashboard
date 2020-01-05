@@ -9,14 +9,28 @@
   var city = $("#display-city")
   var weatherDetails = $("#weather-details")
   var showFive = $("#show-five")
+  // var history = $("#search-history")
 
+  function loadHistory(){
+    var collectHistory = []
+    collectHistory.push($("#search-input").val().trim())
+    for (var j = 0; j < collectHistory.length; j++){
+      var showHistory = $("<button>")
+      showHistory.text(collectHistory[j])
+      $("#search-history").append(showHistory)
+      console.log(collectHistory[j])
+    }
+    // $("button").on(click, displayWeather)
+  }
 
-function displayWeather(){
+  
+  function displayWeather(){
     event.preventDefault();
     city.empty()
     weatherDetails.empty()
     
     var cityInput = $("#search-input").val().trim()
+    
     
     console.log("click")
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=2d0fa82442b24204860c78bd6df0510b"
@@ -79,10 +93,12 @@ function displayWeather(){
       //   $("#weather-details").append(response.wind)
       $(weatherDetails).append(temp, humidity, windSpeed)
     })
-    
+    loadHistory()
     fiveDay()
   }
   
+  
+
   // weatherDetails.style.display = "none"
 
 $("#select-city").on("click", displayWeather);{

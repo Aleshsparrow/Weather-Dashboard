@@ -52,7 +52,7 @@
       }).then(function(res) {
         var uv = $("#uv-details")
         var index = $("<div>")
-        $(index).text(res.value)
+        $(index).text("UV Index: " + res.value)
         // var cityTime = res.date_iso.split("T")
         // cityTime = res.date_iso.split("T")[0].split("-")
         // cityTimePaste = "(" + cityTime[1] + "/" + cityTime[2] + "/" + cityTime[0] + ")"

@@ -34,7 +34,7 @@
     
     
     console.log("click")
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=2d0fa82442b24204860c78bd6df0510b"
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=2d0fa82442b24204860c78bd6df0510b"
     
     $.ajax({
       url: queryURL,

@@ -34,7 +34,7 @@
     
     
     console.log("click")
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=166a433c57516f51dfab1f7edaed8413"
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=166a433c57516f51dfab1f7edaed8413"
     
     $.ajax({
       url: queryURL,
@@ -74,7 +74,7 @@
       // console.log(timeData._d)
       var img = $("<img>").attr(
         "src",
-        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+        "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
         city.append(img)
       
       var temp = $("<div>")
@@ -142,7 +142,7 @@ function fiveDay(){
           var card = $("<div>").addClass("row col-lg-3 col-md-3 col-sm-6 col-xs-12").text(formatDate)
           var img1 = $("<img>").attr(
             "src",
-            "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
+            "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
             
             var temp1 = $("<p>")
             temp0 = Math.floor((data.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2);

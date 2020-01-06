@@ -12,6 +12,7 @@
   // var history = $("#search-history")
 
   function loadHistory(){
+    // event.preventDefault()
     var collectHistory = []
     collectHistory.push($("#search-input").val().trim())
     for (var j = 0; j < collectHistory.length; j++){
@@ -20,7 +21,7 @@
       $("#search-history").append(showHistory)
       console.log(collectHistory[j])
     }
-    // $("button").on(click, displayWeather)
+    // $(showHistory).on("click", console.log("clicking"))
   }
   
   
@@ -56,14 +57,15 @@
         // var cityTime = res.date_iso.split("T")
         // cityTime = res.date_iso.split("T")[0].split("-")
         // cityTimePaste = "(" + cityTime[1] + "/" + cityTime[2] + "/" + cityTime[0] + ")"
+        uv.empty()
         // console.log(cityTimePaste)
         $(uv).append(index)
         // $("uv-details").text(res.value.toString())
         // var displayIndex = $("<div>").text(res.value)
         // $(displayUV).text(resUV.value)
-          // console.log(displayIndex)
+        // console.log(displayIndex)
       })
-         
+      
       
       
       city.text(response.name + " (" + new Date().toLocaleDateString() + ")")

@@ -5,7 +5,7 @@
   // dataM = dataM._d.split(" ")
   // console.log(dataM)
   
-  // var APIKey = "2d0fa82442b24204860c78bd6df0510b"
+  // var APIKey = "166a433c57516f51dfab1f7edaed8413"
   var city = $("#display-city")
   var weatherDetails = $("#weather-details")
   var showFive = $("#show-five")
@@ -34,7 +34,7 @@
     
     
     console.log("click")
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=2d0fa82442b24204860c78bd6df0510b"
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=166a433c57516f51dfab1f7edaed8413"
     
     $.ajax({
       url: queryURL,
@@ -48,7 +48,7 @@
       var latitude = response.coord.lat
       console.log(longitude, latitude)
       $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=2d0fa82442b24204860c78bd6df0510b",
+        url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=166a433c57516f51dfab1f7edaed8413",
         method: "GET"
       }).then(function(res) {
         var uv = $("#uv-details")
@@ -74,7 +74,7 @@
       // console.log(timeData._d)
       var img = $("<img>").attr(
         "src",
-        "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
         city.append(img)
       
       var temp = $("<div>")
@@ -110,7 +110,7 @@ $("#select-city").on("click", displayWeather);{
 function fiveDay(){
   var cityInput = $("#search-input").val().trim()
   showFive.empty()
-  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=2d0fa82442b24204860c78bd6df0510b"
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=166a433c57516f51dfab1f7edaed8413"
   
   $.ajax({
     url: queryURL,
@@ -142,7 +142,7 @@ function fiveDay(){
           var card = $("<div>").addClass("row col-lg-3 col-md-3 col-sm-6 col-xs-12").text(formatDate)
           var img1 = $("<img>").attr(
             "src",
-            "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
+            "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
             
             var temp1 = $("<p>")
             temp0 = Math.floor((data.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2);

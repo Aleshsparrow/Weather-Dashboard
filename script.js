@@ -16,13 +16,13 @@
     collectHistory.push($("#search-input").val().trim())
     for (var j = 0; j < collectHistory.length; j++){
       var showHistory = $("<button>")
-      showHistory.text(collectHistory[j]).addClass("row", "col-sm-12" )
+      showHistory.text(collectHistory[j]).addClass("row btn-block col-sm-12" )
       $("#search-history").append(showHistory)
       console.log(collectHistory[j])
     }
     // $("button").on(click, displayWeather)
   }
-
+  
   
   function displayWeather(){
     event.preventDefault();
@@ -92,6 +92,7 @@
       
       //   $("#weather-details").append(response.wind)
       $(weatherDetails).append(temp, humidity, windSpeed)
+      
     })
     loadHistory()
     fiveDay()

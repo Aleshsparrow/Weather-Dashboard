@@ -16,7 +16,7 @@
     collectHistory.push($("#search-input").val().trim())
     for (var j = 0; j < collectHistory.length; j++){
       var showHistory = $("<button>")
-      showHistory.text(collectHistory[j])
+      showHistory.text(collectHistory[j]).addClass("row", "col-sm-12" )
       $("#search-history").append(showHistory)
       console.log(collectHistory[j])
     }

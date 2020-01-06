@@ -34,6 +34,7 @@ nav{
     }
     
     #search-history{
+        margin: 15px;
         width: 100%;
         display: block;
     }

@@ -1,8 +1,7 @@
+// Setting an event listener for when the page loads
 $(document).ready(function() {
   $("#select-city").on("click", function() {
     var cityInput = $("#search-input").val().trim()
-
-    // clear input box
     
     displayWeather(cityInput);
     loadHistory(cityInput)
@@ -14,50 +13,40 @@ $(document).ready(function() {
   var weatherDetails = $("#weather-details")
   var showFive = $("#show-five")
 
-
+// Function for reloading city history
   function loadHistory(){
     console.log($("#search-input").val().trim())
-    // console.log(cityInput);
-    
     var textValue = $("#search-input").val().trim()
     var collectHistory = []
     if(collectHistory.indexOf(textValue) === -1 && textValue != ""){
       collectHistory.push(textValue)
-    }
-    
-    console.log(collectHistory);
-    
+    }    
     for (var j = 0; j < collectHistory.length; j++){
       var showHistory = $("<button>")
       showHistory.text(collectHistory[j]).addClass("row btn-block col-sm-12" )
       $("#search-history").append(showHistory)
-      // console.log(collectHistory[j])
     }
     showHistory.on("click", function(){
-      event.preventDefault()
-      console.log($(this).text())
-      
+      event.preventDefault()      
       displayWeather($(this).text())
       window.localStorage.setItem("history", JSON.stringify(collectHistory))
     })    
   }
   
+  // Function to make API calls to open weather and diaplay weather on the page
   function displayWeather(cityInput){
     event.preventDefault();
     city.empty()
     weatherDetails.empty()
     
-    // console.log("click")
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=166a433c57516f51dfab1f7edaed8413"
     
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      // console.log(response)
       var longitude = response.coord.lon
       var latitude = response.coord.lat
-      // console.log(longitude, latitude)
       $.ajax({
         url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=166a433c57516f51dfab1f7edaed8413",
         method: "GET"
@@ -86,14 +75,11 @@ $(document).ready(function() {
         $(windSpeed).text("Wind Speed: " + response.wind.speed + "MPH")
         $(weatherDetails).append(temp, humidity, windSpeed)
       })
-      // loadHistory(cityInput)
       fiveDay(cityInput)
     }    
-    // $("#select-city").on("click", displayWeather);{
-    // }
     
+    // Function to make API call for the five day forecast and display on page
     function fiveDay(cityInput){
-      // var cityInput = $("#search-input").val().trim()
       showFive.empty()
       var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=166a433c57516f51dfab1f7edaed8413"
       

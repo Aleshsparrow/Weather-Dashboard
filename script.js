@@ -11,7 +11,6 @@ $(document).ready(function() {
         $("#search-input").val("");
       }
       else if (cityInput === ""){
-        console.log("empty");
         errorDiv.text("Please enter a city name")
         $("body").append(errorDiv)
     }

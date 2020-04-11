@@ -38,6 +38,7 @@ $(document).ready(function() {
       console.log($(this).text())
       
       displayWeather($(this).text())
+      window.localStorage.setItem("history", JSON.stringify(collectHistory))
     })    
   }
   

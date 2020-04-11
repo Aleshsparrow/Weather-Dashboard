@@ -1,11 +1,21 @@
 // Setting an event listener for when the page loads
 $(document).ready(function() {
+    var errorDiv = $("<div>").text("Please enter a city name")
+    $("body").append(errorDiv)
   $("#select-city").on("click", function() {
+    event.preventDefault()
+    errorDiv.text("")
     var cityInput = $("#search-input").val().trim()
+    if(cityInput != ""){
+      displayWeather(cityInput);
+      loadHistory(cityInput)
+      $("#search-input").val("");
+    }
+    else if (cityInput === ""){
+      console.log("empty");
+      errorDiv.text("Please enter a city name")
+    }
     
-    displayWeather(cityInput);
-    loadHistory(cityInput)
-    $("#search-input").val("");
   });
 
 
@@ -15,7 +25,6 @@ $(document).ready(function() {
 
 // Function for reloading city history
   function loadHistory(){
-    console.log($("#search-input").val().trim())
     var textValue = $("#search-input").val().trim()
     var collectHistory = []
     if(collectHistory.indexOf(textValue) === -1 && textValue != ""){
@@ -87,8 +96,10 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
       }).then(function(data){
-        
-        $("#forecast").text("5 Day Forecast:")
+        if(cityInput != ""){
+          $("#forecast").text("5 Day Forecast:")
+
+        }
            
           for (var i = 0; i < data.list.length; i++){
             if(data.list[i].dt_txt.indexOf("12:00:00") !== -1){

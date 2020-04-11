@@ -1,45 +1,62 @@
+$(document).ready(function() {
+  $("#select-city").on("click", function() {
+    var cityInput = $("#search-input").val().trim()
+
+    // clear input box
+    
+    displayWeather(cityInput);
+    loadHistory(cityInput)
+    $("#search-input").val("");
+  });
+
 
   var city = $("#display-city")
   var weatherDetails = $("#weather-details")
   var showFive = $("#show-five")
 
+
   function loadHistory(){
+    console.log($("#search-input").val().trim())
+    // console.log(cityInput);
+    
+    var textValue = $("#search-input").val().trim()
     var collectHistory = []
-    collectHistory.push($("#search-input").val().trim())
+    if(collectHistory.indexOf(textValue) === -1 && textValue != ""){
+      collectHistory.push(textValue)
+    }
+    
+    console.log(collectHistory);
+    
     for (var j = 0; j < collectHistory.length; j++){
       var showHistory = $("<button>")
       showHistory.text(collectHistory[j]).addClass("row btn-block col-sm-12" )
       $("#search-history").append(showHistory)
-      console.log(collectHistory[j])
-      console.log(this)
+      // console.log(collectHistory[j])
     }
     showHistory.on("click", function(){
       event.preventDefault()
+      console.log($(this).text())
       
-      displayWeather($(this).val())
-    })
-    
+      // displayWeather($(this).text())
+    })    
   }
   
-  
-  
-  function displayWeather(){
+  function displayWeather(cityInput){
     event.preventDefault();
     city.empty()
-    weatherDetails.empty()   
+    weatherDetails.empty()
     
-    var cityInput = $("#search-input").val().trim()
-    console.log("click")
+    // console.log("click")
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&APPID=166a433c57516f51dfab1f7edaed8413"
     
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response)
+      // console.log(response)
       var longitude = response.coord.lon
       var latitude = response.coord.lat
-      console.log(longitude, latitude)
+      // console.log(longitude, latitude)
       $.ajax({
         url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=166a433c57516f51dfab1f7edaed8413",
         method: "GET"
@@ -47,12 +64,10 @@
         var uv = $("#uv-details")
         var index = $("<div>")
         $(index).text("UV Index: " + res.value)
+      
         uv.empty()
         $(uv).append(index)
-      })
-      
-      
-      
+      })      
       city.text(response.name + " (" + new Date().toLocaleDateString() + ")")
       var img = $("<img>").attr(
         "src",
@@ -68,21 +83,16 @@
         
         var windSpeed = $("<div>")
         $(windSpeed).text("Wind Speed: " + response.wind.speed + "MPH")
-        
-        
         $(weatherDetails).append(temp, humidity, windSpeed)
-        
       })
-      loadHistory()
-      fiveDay()
-    }
+      // loadHistory(cityInput)
+      fiveDay(cityInput)
+    }    
+    // $("#select-city").on("click", displayWeather);{
+    // }
     
-        
-    $("#select-city").on("click", displayWeather);{
-    }
-    
-    function fiveDay(){
-      var cityInput = $("#search-input").val().trim()
+    function fiveDay(cityInput){
+      // var cityInput = $("#search-input").val().trim()
       showFive.empty()
       var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=166a433c57516f51dfab1f7edaed8413"
       
@@ -92,7 +102,7 @@
       }).then(function(data){
         
         $("#forecast").text("5 Day Forecast:")
-          
+           
           for (var i = 0; i < data.list.length; i++){
             if(data.list[i].dt_txt.indexOf("12:00:00") !== -1){
               var date = data.list[i].dt_txt.split(" ")
@@ -115,8 +125,8 @@
                 $(showFive).append(listCards)
                 
               }
-            }            
+            }
           })
-          
-          
         }
+
+      })

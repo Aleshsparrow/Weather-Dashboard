@@ -1,19 +1,19 @@
 // Setting an event listener for when the page loads
 $(document).ready(function() {
     var errorDiv = $("<div>").text("Please enter a city name")
-    $("body").append(errorDiv)
-  $("#select-city").on("click", function() {
-    event.preventDefault()
-    errorDiv.text("")
-    var cityInput = $("#search-input").val().trim()
-    if(cityInput != ""){
-      displayWeather(cityInput);
-      loadHistory(cityInput)
-      $("#search-input").val("");
-    }
-    else if (cityInput === ""){
-      console.log("empty");
-      errorDiv.text("Please enter a city name")
+    $("#select-city").on("click", function() {
+      event.preventDefault()
+      errorDiv.text("")
+      var cityInput = $("#search-input").val().trim()
+      if(cityInput != ""){
+        displayWeather(cityInput);
+        loadHistory(cityInput)
+        $("#search-input").val("");
+      }
+      else if (cityInput === ""){
+        console.log("empty");
+        errorDiv.text("Please enter a city name")
+        $("body").append(errorDiv)
     }
     
   });

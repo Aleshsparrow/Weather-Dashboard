@@ -37,7 +37,7 @@ $(document).ready(function() {
       event.preventDefault()
       console.log($(this).text())
       
-      // displayWeather($(this).text())
+      displayWeather($(this).text())
     })    
   }
   
